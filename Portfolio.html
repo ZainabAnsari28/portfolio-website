@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zainab's Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Agu+Display&family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="Portfolio.css">
+    
+    </head>
+<body>
+
+    <!--Header Section -->
+    <header>
+        <div class="logo">ZAINAB'S Portfolio</div>
+        <nav>
+            <button class="menu-toggle" aria-label="Toggle navigation">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+            <ul class="navigation">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <script src="Portfolio.js"></script>
+
+
+    <!-- Home Section -->
+    <section id="home" class="home-section">
+    <div class="home-content">
+        <h1>Welcome to My Portfolio</h1>
+        <p>Hello! I am <span>Zainab Ansari</span>, a passionate full-stack developer with expertise in 
+            building responsive, dynamic, and user-friendly web applications.
+            Explore my work to learn more about my skills in front-end and back-end development, 
+            as well as the projects I've completed.
+        </p>
+        <a href="#projects" class="btn">View My Work</a>
+    </div>
+    <div class="home-photo">
+        <img src="/Portfolio/img/zb.png" alt="Zainab Ansari" />
+    </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="about-container">
+            <h2>About Zainab's</h2>
+            <p>
+                I’m a creative and detail-oriented developer with a passion for coding, design, and 
+                problem-solving. With expertise in building scalable and efficient web applications,
+                 I aim to bring ideas to life through technology.
+            </p>
+            <div class="about-details">
+                <div class="about-card">
+                    <i class="fas fa-code"></i>
+                    <h3>Skills</h3>
+                    <ul>
+                        <li>HTML, CSS, JavaScript</li>
+                        <li>Bootstrap</li>
+                        <li>Angular</li>
+                        <li>Java</li>
+                        <li>Spring Boot</li>
+                        <li>MySQL</li>
+                    </ul>
+                </div>
+                <div class="about-card">
+                    <i class="fas fa-briefcase"></i>
+                    <h3>Experience</h3>
+                    <ul>
+                        <li>Software Engineer at Capgemini</li>
+                        <li class="company">Capgemini, Mumbai</li>
+                        <li class="duration">October 2023 - Present</li>
+                    </ul>
+                </div>
+                <div class="about-card">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h3>Education</h3>
+                    <ul>
+                        <li>Bachelor of Technology in Computer Science</li>
+                        <li>Certified Full-Stack Developer</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Project Section -->
+    <section id="projects" class="projects-section">
+        <div class="projects-container">
+            <h2>Zainab's Projects</h2>
+            <p class="section-description">A showcase of my most exciting and innovative works. Click to explore!</p>
+            <div class="projects-cards">
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <!-- <div class="card-icon">
+                        <img src="icons/car-rental.png" alt="Car Rental Icon">
+                    </div> -->
+                    <h3>Online Car Rental Management System</h3>
+                    <p>A web-based application to manage car rentals efficiently, featuring dynamic booking and user management.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/yourusername/car-rental" target="_blank" class="btn">GitHub</a>
+                        <a href="https://your-demo-link.com" target="_blank" class="btn">Live Demo</a>
+                    </div>
+                </div>
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <!-- <div class="card-icon">
+                        <img src="icons/train.png" alt="Train Icon">
+                    </div> -->
+                    <h3>Railway Reservation System</h3>
+                    <p>A robust system for booking railway tickets, tracking availability, and managing user reservations.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/yourusername/railway-reservation" target="_blank" class="btn">GitHub</a>
+                        <a href="https://your-demo-link.com" target="_blank" class="btn">Live Demo</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <div class="contact-container">
+            <h2>Contact Us</h2>
+            <div class="contact-content">
+                <!-- Illustration -->
+                <div class="contact-illustration">
+                    <img src="/Portfolio/img/Contact2BG.png" alt="Contact Illustration" />
+                </div>
+                <!-- Contact Form -->
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="input-box">
+                            <label for="name">Name <span class="required">*</span></label>
+                            <i class="fa fa-user"></i>
+                            <input type="text" id="name" placeholder="Name" />
+                        </div>
+                        <div class="input-box">
+                            <label for="email">E-mail <span class="required">*</span></label>
+                            <i class="fa fa-envelope"></i>
+                            <input type="text" id="email" placeholder="E-mail" />
+                            
+                        </div>
+                        <div class="input-box">
+                            <label for="message">Message <span class="required">*</span></label>
+                            <i class="fa fa-comment"></i>
+                            <textarea id="message" placeholder="Message" rows="5"></textarea>
+                        </div>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Popup for success message -->
+    <div id="successPopup" class="popup">
+        <div class="popup-content">
+            <h3>Message Sent Successfully!</h3>
+            <p>Thank you for reaching out. We will get back to you shortly.</p>
+            <button id="closePopup" class="btn">Close</button>
+        </div>
+    </div>
+    </section>
+    
+    
+    
+    
+        
+    <footer>
+        <div class="footer-container">
+          <div class="footer-content">
+            <p>&copy; 2024 Zainab Ansari. All rights reserved.</p>
+          </div>
+          <div class="footer-links">
+            <ul>
+              <li><a href="https://www.linkedin.com/in/zainab-ansari" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a></li>
+              <li><a href="https://github.com/ZainabAnsari28" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a></li>
+              <li><a href="mailto:zainuuansari@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a></li>
+              <li><a href="https://www.instagram.com/zainab.ansari" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a></li>
+            </ul>
+          </div>
+        </div>
+      </footer>
+      
+      
+</body>
+</html>
