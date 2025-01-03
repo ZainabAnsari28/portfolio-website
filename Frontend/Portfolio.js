@@ -1,49 +1,83 @@
 const menuToggle = document.querySelector('.menu-toggle');
 const navigation = document.querySelector('.navigation');
 
+// Toggle the menu visibility on click
 menuToggle.addEventListener('click', function () {
     navigation.classList.toggle('open'); 
 });
 
+// Form submission and validation logic
 document.addEventListener("DOMContentLoaded", function() {
     const form = document.getElementById("contactForm");
+    const popup = document.getElementById("successPopup");
+    const closePopup = document.getElementById("closePopup");
 
     form.addEventListener("submit", function(event) {
         event.preventDefault();
 
-        const name = document.getElementById("name");
-        const email = document.getElementById("email");
-        const message = document.getElementById("message");
+        // Get form values
+        const name = document.getElementById("name").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const message = document.getElementById("message").value.trim();
 
-        clearErrors();
+        clearErrors();  // Clear previous error messages
 
         let isValid = true;
 
-        if (name.value.trim() === "") {
-            showError(name, "Please enter your name.");
+        // Validate form fields
+        if (name === "" || !/^[a-zA-Z\s]+$/.test(name)) {
+            showError(document.getElementById("name"), "Please enter a valid name.");
             isValid = false;
         }
 
-        if (email.value.trim() === "") {
-            showError(email, "Please enter your email address.");
+        if (email === "") {
+            showError(document.getElementById("email"), "Please enter your email address.");
             isValid = false;
-        } else if (!validateEmail(email.value.trim())) {
-            showError(email, "Please enter a valid email address.");
-            isValid = false;
-        }
-
-        if (message.value.trim() === "") {
-            showError(message, "Please enter your message.");
-            isValid = false;
-        } else if (message.value.trim().length < 20) {
-            showError(message, "Message must be at least 20 characters long.");
+        } else if (!validateEmail(email)) {
+            showError(document.getElementById("email"), "Please enter a valid email address.");
             isValid = false;
         }
 
+        if (message === "") {
+            showError(document.getElementById("message"), "Please enter your message.");
+            isValid = false;
+        } else if (message.length < 20) {
+            showError(document.getElementById("message"), "Message must be at least 20 characters long.");
+            isValid = false;
+        }
 
         if (isValid) {
-            // Form can be submitted here (e.g., AJAX or form.submit())
-            console.log("Form is valid. You can submit data to the server.");
+            fetch('http://localhost:8080/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name, email, message })
+            })
+            .then(response => response.text())  // Use text() if response is plain text
+            .then(data => {
+                if (data.includes("success")) {  // Simple check for success message in plain text response
+                    popup.style.display = "flex";
+                    form.reset();
+                } else {
+                    showError(form, "Error: " + data);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                showError(form, "Network error. Please try again later.");
+            });
+            
+        }
+    });
+
+    // Close success popup when clicked
+    closePopup.addEventListener("click", function () {
+        popup.style.display = "none";
+    });
+
+    // Close success popup when clicked outside the popup
+    window.addEventListener("click", function (event) {
+        if (event.target === popup) {
+            popup.style.display = "none";
         }
     });
 
@@ -68,42 +102,4 @@ document.addEventListener("DOMContentLoaded", function() {
         const re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
         return re.test(email);
     }
-
 });
-
-
-document.addEventListener("DOMContentLoaded", function () {
-    const form = document.getElementById("contactForm");
-    const popup = document.getElementById("successPopup");
-    const closePopup = document.getElementById("closePopup");
-
-    form.addEventListener("submit", function (event) {
-        event.preventDefault();
-
-        // Form validation (basic)
-        const name = document.getElementById("name").value.trim();
-        const email = document.getElementById("email").value.trim();
-        const message = document.getElementById("message").value.trim();
-
-        if (name && email && message.length >= 20) {
-            popup.style.display = "flex";
-            form.reset();
-        } else {
-            alert("Please fill out all fields correctly.");
-        }
-    });
-
-    closePopup.addEventListener("click", function () {
-        popup.style.display = "none";
-    });
-
-    window.addEventListener("click", function (event) {
-        if (event.target === popup) {
-            popup.style.display = "none";
-        }
-    });
-});
-
-
-
-
